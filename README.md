@@ -8,9 +8,13 @@ The primary goal of this project is to create an automated student attendance sy
 
 This report discusses the importance of face recognition in daily life and how it is achieved through human intellect and the analysis of visual information. However, humans have limitations in their ability to recognize faces, which is why computers with almost limitless memory, high processing speed, and power are used in face recognition systems. The report also highlights the widespread use of facial recognition technology in various fields such as airport security, criminal investigations, and social networking sites. Additionally, the report provides a brief history of face recognition research starting from the 1960s, including the development of methods such as the detection of facial features and principle component analysis.
 
+---
+
 **Problem Statement**
 
 The traditional method of recording student attendance has several issues and can be replaced with a facial recognition-based system that is simple and efficient. The system can overcome the problem of fraudulent approaches and eliminate the need for manual attendance taking. However, the training procedure for the system is time-consuming, and variations in illumination and head postures can impair its effectiveness. Therefore, a real-time functioning system with high precision and quick computation times must be developed.
+
+---
 
 **Aims and Objectives**
 
@@ -18,6 +22,8 @@ The goal of this project is to create an automated student attendance system bas
   To identify the useful aspects on the observed face.
   To categorize the traits in order to identify the observed face.
   To note the indicated student's attendance
+
+---
 
 **Literature Survey**
 
@@ -28,6 +34,8 @@ However, implementing a facial recognition attendance system comes with its own 
 To overcome these challenges, researchers have been working on developing more advanced facial recognition algorithms that can account for these variations and provide higher levels of accuracy. In addition, real-time functioning attendance systems must be created to identify students within specific time limits and avoid missing any students.
 
 Overall, facial recognition-based attendance systems have the potential to greatly improve the efficiency and accuracy of attendance tracking in classrooms. With continued research and development, they can become even more effective and widespread in educational institutions.
+
+---
 
 **Code and Explanation**
 
@@ -51,27 +59,11 @@ Step 5: User Interface
 
 To make the system easy to use, you can create a user interface that displays the attendance records and allows administrators to manage the system. The Tkinter UI makes it easy for users to view attendance records and perform other tasks such as adding new  users to the system.
 
+---
 
 **Result**
 
 After evaluating the performance of our model, if we observe that it is performing well on the training and validation data, we can confidently use this model to predict outcomes on new and unseen data. In other words, we can use this model for marking attendance in various fields.
 
-**Future Scope**
+---
 
-The future scope of face recognition with attendance in AI is vast and promising. Here are some potential areas where this technology could be applied:
-
-1. Security: Face recognition attendance systems can be used for security purposes, such as in access control systems or in law enforcement to identify suspects.
-
-2. Education: Face recognition attendance systems can be used in schools and universities to track student attendance, reducing the administrative burden on teachers and improving accuracy.
-
-3. Healthcare: Face recognition attendance systems can be used in hospitals and clinics to track staff attendance, ensuring that there are enough personnel to care for patients and reducing errors in payroll processing.
-
-4. Retail: Face recognition attendance systems can be used in retail environments to track employee attendance and reduce time theft or fraud.
-
-5. Events: Face recognition attendance systems can be used at events to manage attendance and provide better security and safety measures.
-
-6. Marketing: Face recognition attendance systems can be used in marketing campaigns to track customer attendance and demographics, providing valuable insights for targeted marketing efforts.
-
-7. Travel: Face recognition attendance systems can be used in airports and other travel hubs to track passenger attendance and reduce wait times.
-
-Overall, the future scope of face recognition with attendance in AI is vast and has the potential to improve efficiency, accuracy, and security across a wide range of industries and applications.
