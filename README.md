@@ -19,9 +19,9 @@ The traditional method of recording student attendance has several issues and ca
 **Aims and Objectives**
 
 The goal of this project is to create an automated student attendance system based on facial recognition. The following are expected results to meet the objectives: To identify the facial segment in the video frame.
-  To identify the useful aspects on the observed face.
-  To categorize the traits in order to identify the observed face.
-  To note the indicated student's attendance
+To identify the useful aspects on the observed face.
+To categorize the traits in order to identify the observed face.
+To note the indicated student's attendance
 
 ---
 
