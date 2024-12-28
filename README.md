@@ -30,22 +30,22 @@ Attendance management is a critical component in educational institutions and or
 
 ## Features
 
-### ![Real-time Detection Icon](https://img.icons8.com/fluency/48/000000/real-time-sync.png) **Real-time Face Recognition**
+### **Real-time Face Recognition**
 Instantly recognize and record attendance as individuals enter the monitored area using live camera feeds.
 
-### ![High Accuracy Icon](https://img.icons8.com/fluency/48/000000/target.png) **High Accuracy**
+### **High Accuracy**
 Employs deep learning models trained on extensive datasets to ensure precise face recognition even in varying lighting and angles.
 
-### ![Multi-User Support Icon](https://img.icons8.com/fluency/48/000000/multiple-users.png) **Multi-User Support**
+### **Multi-User Support**
 Capable of handling multiple users simultaneously, making it ideal for large classrooms or auditoriums.
 
-### ![User-Friendly Interface Icon](https://img.icons8.com/fluency/48/000000/user-interface.png) **User-Friendly Interface**
+### **User-Friendly Interface**
 Intuitive dashboard for easy management and monitoring of attendance records.
 
-### ![Secure Data Icon](https://img.icons8.com/fluency/48/000000/lock.png) **Secure Data Handling**
+### **Secure Data Handling**
 Ensures all attendance data is securely stored and processed, adhering to privacy standards.
 
-### ![Report Generation Icon](https://img.icons8.com/fluency/48/000000/report-card.png) **Automated Report Generation**
+### **Automated Report Generation**
 Generates comprehensive attendance reports with customizable parameters for analysis and record-keeping.
 
 ## Architecture
