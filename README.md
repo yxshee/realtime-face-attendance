@@ -54,7 +54,7 @@ Generates comprehensive attendance reports with customizable parameters for anal
     
 ![Architecture Diagram](https://github.com/user-attachments/assets/234fe509-93e7-4655-ab9c-b9c1fadd3cee)
 
-*System architecture showcasing the flow from image capture to attendance recording.*
+**System architecture showcasing the flow from image capture to attendance recording.**
 
  **Image Capture**: Utilizes webcams or IP cameras to capture live video streams.
  **Face Detection**: Processes frames using OpenCV to detect faces in real-time.
