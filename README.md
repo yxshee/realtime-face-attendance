@@ -56,11 +56,11 @@ Generates comprehensive attendance reports with customizable parameters for anal
 
 **System architecture showcasing the flow from image capture to attendance recording.**
 
- **Image Capture**: Utilizes webcams or IP cameras to capture live video streams.
- **Face Detection**: Processes frames using OpenCV to detect faces in real-time.
- **Face Recognition**: Applies a pre-trained deep learning model to identify individuals.
- **Attendance Logging**: Records recognized faces with timestamps in the database.
- **User Interface**: Displays real-time attendance status and provides administrative controls.
+ **Image Capture**: Utilizes webcams or IP cameras to capture live video streams.<br>
+ **Face Detection**: Processes frames using OpenCV to detect faces in real-time.<br>
+ **Face Recognition**: Applies a pre-trained deep learning model to identify individuals.<br>
+ **Attendance Logging**: Records recognized faces with timestamps in the database.<br>
+ **User Interface**: Displays real-time attendance status and provides administrative controls.<br>
 
 <img alt="Deepface Architecture by Facebook 
 " src="https://github.com/user-attachments/assets/1b83650c-f85c-48c3-bfb3-d1bf16ba67fa" >
