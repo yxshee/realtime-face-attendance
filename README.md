@@ -64,7 +64,7 @@ Generates comprehensive attendance reports with customizable parameters for anal
 
 <img alt="Deepface Architecture by Facebook 
 " src="https://github.com/user-attachments/assets/1b83650c-f85c-48c3-bfb3-d1bf16ba67fa" >
-Deepface Architecture by Facebook </div>
+**Deepface Architecture by Facebook** </div>
 
 
 
