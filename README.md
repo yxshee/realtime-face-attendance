@@ -53,7 +53,8 @@ Generates comprehensive attendance reports with customizable parameters for anal
 
 ## Architecture
 
-![Architecture Diagram](https://github.com/yxshee/realtime-face-attendance/assets/architecture-diagram.png)  
+![Architecture Diagram](https://github.com/user-attachments/assets/234fe509-93e7-4655-ab9c-b9c1fadd3cee)
+
 *System architecture showcasing the flow from image capture to attendance recording.*
 
 1. **Image Capture**: Utilizes webcams or IP cameras to capture live video streams.
@@ -69,10 +70,6 @@ Experience the **Real-time Face Attendance** system in action!
 ### ![Demo Screenshot](https://github.com/yxshee/realtime-face-attendance/assets/demo-screenshot.png)
 
 *Real-time face recognition interface displaying recognized users and attendance status.*
-
-### Live Demo
-
-Check out the [live demo](https://your-live-demo-link.com) to see the application working in real-time.
 
 ### Video Walkthrough
 
@@ -292,8 +289,8 @@ This project is licensed under the [MIT License](LICENSE).
 
 For any inquiries, issues, or contributions, please contact:
 
-- **Author:** [Your Name](https://github.com/yxshee)
-- **Email:** your.email@example.com
+- **Author:** [Yash Dogra](https://github.com/yxshee)
+- **Email:** yash999901@gmail.com
 
 Feel free to open an issue or reach out directly for collaboration opportunities!
 
@@ -312,12 +309,4 @@ Feel free to open an issue or reach out directly for collaboration opportunities
 
 Thank you for using **Real-time Face Attendance**! Your support helps in building efficient and secure attendance management systems.
 
-# Quick Links
 
-- [Live Demo](https://your-live-demo-link.com)
-- [Video Walkthrough](https://www.youtube.com/watch?v=your-video-link)
-- [Documentation](https://your-documentation-link.com)
-
----
-
-*Note: Replace placeholder image URLs (e.g., `https://github.com/yxshee/realtime-face-attendance/assets/banner.png`) and links with actual paths and URLs relevant to your project.*
