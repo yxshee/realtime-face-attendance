@@ -305,8 +305,7 @@ Feel free to open an issue or reach out directly for collaboration opportunities
 
 ---
 
-![Thank You](https://img.icons8.com/fluency/48/000000/thank-you.png)
+<img src = "https://media.giphy.com/media/fxI1G5PNC5esyNlIUs/giphy.gif?cid=790b76114pw7hbpil22jibkkgdcwwwjm2ei1n7emp4fhcn1o&ep=v1_gifs_search&rid=giphy.gif&ct=g">
 
-Thank you for using **Real-time Face Attendance**! Your support helps in building efficient and secure attendance management systems.
 
 
