@@ -1,9 +1,9 @@
 # Real-time Face Attendance
 
-![License](https://img.shields.io/github/license/yxshee/realtime-face-attendance)
+<!--![License](https://img.shields.io/github/license/yxshee/realtime-face-attendance)
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)
 ![Stars](https://img.shields.io/github/stars/yxshee/realtime-face-attendance?style=social)
-![Forks](https://img.shields.io/github/forks/yxshee/realtime-face-attendance?style=social)
+![Forks](https://img.shields.io/github/forks/yxshee/realtime-face-attendance?style=social)-->
 
 A **highly efficient and accurate** real-time face attendance system leveraging **state-of-the-art computer vision** and **machine learning** technologies.
 
