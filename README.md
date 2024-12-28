@@ -7,7 +7,6 @@
 
 A **highly efficient and accurate** real-time face attendance system leveraging **state-of-the-art computer vision** and **machine learning** technologies.
 
-![Real-time Face Attendance Banner](https://github.com/yxshee/realtime-face-attendance/assets/banner.png)  
 *Seamless and automated attendance tracking using facial recognition.*
 
 ## Table of Contents
