@@ -5,9 +5,7 @@
 ![Stars](https://img.shields.io/github/stars/yxshee/realtime-face-attendance?style=social)
 ![Forks](https://img.shields.io/github/forks/yxshee/realtime-face-attendance?style=social)-->
 
-A **highly efficient and accurate** real-time face attendance system leveraging **state-of-the-art computer vision** and **machine learning** technologies.
-
-*Seamless and automated attendance tracking using facial recognition.*
+A **highly efficient and accurate** real-time face attendance system leveraging **state-of-the-art computer vision** and **machine learning** technologies.Seamless and automated attendance tracking using facial recognition
 
 ## Table of Contents
 
