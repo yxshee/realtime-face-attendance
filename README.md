@@ -305,7 +305,4 @@ Feel free to open an issue or reach out directly for collaboration opportunities
 
 ---
 
-<img src = "https://media.giphy.com/media/fxI1G5PNC5esyNlIUs/giphy.gif?cid=790b76114pw7hbpil22jibkkgdcwwwjm2ei1n7emp4fhcn1o&ep=v1_gifs_search&rid=giphy.gif&ct=g">
-
-
 
