@@ -5,6 +5,9 @@
 ![Stars](https://img.shields.io/github/stars/yxshee/realtime-face-attendance?style=social)
 ![Forks](https://img.shields.io/github/forks/yxshee/realtime-face-attendance?style=social)-->
 
+<img width="1164" alt="image" src="https://github.com/user-attachments/assets/7df7ab47-95e0-4cfa-b4fe-3bf1e00733c7" />
+
+
 A **highly efficient and accurate** real-time face attendance system leveraging **state-of-the-art computer vision** and **machine learning** technologies.Seamless and automated attendance tracking using facial recognition
 
 ## Table of Contents
@@ -72,16 +75,8 @@ Generates comprehensive attendance reports with customizable parameters for anal
 ## Demo
 
 Experience the **Real-time Face Attendance** system in action!
+<a>Demo Screenshot <br> <img width="878" alt="image" src="https://github.com/user-attachments/assets/fe081adf-88cf-4c42-9609-b499b1f2b9c1" /></a>
 
-### ![Demo Screenshot](https://github.com/yxshee/realtime-face-attendance/assets/demo-screenshot.png)
-
-*Real-time face recognition interface displaying recognized users and attendance status.*
-
-### Video Walkthrough
-
-Watch a short video demonstrating the features and usage of Real-time Face Attendance:
-
-[![Watch the video](https://img.icons8.com/ios-filled/50/000000/video.png)](https://www.youtube.com/watch?v=your-video-link)
 
 ## Technologies Used
 
