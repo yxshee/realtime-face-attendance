@@ -1,4 +1,4 @@
-# Realtime Face Attendance
+# Realtime Face Attendance System
 
 <!--![License](https://img.shields.io/github/license/yxshee/realtime-face-attendance)
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)
