@@ -5,8 +5,11 @@
 ![Stars](https://img.shields.io/github/stars/yxshee/realtime-face-attendance?style=social)
 ![Forks](https://img.shields.io/github/forks/yxshee/realtime-face-attendance?style=social)-->
 
-<img width="1164" alt="image" src="https://github.com/user-attachments/assets/7df7ab47-95e0-4cfa-b4fe-3bf1e00733c7" />
+<img width="1164" alt="image" src="https://github.com/user-attachments/assets/7df7ab47-95e0-4cfa-b4fe-3bf1e00733c7">
 
+<br>
+
+<br>
 
 A **highly efficient and accurate** real-time face attendance system leveraging **state-of-the-art computer vision** and **machine learning** technologies.Seamless and automated attendance tracking using facial recognition
 
