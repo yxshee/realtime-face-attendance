@@ -83,15 +83,22 @@ Experience the **Real-time Face Attendance** system in action!
 
 ## Technologies Used
 
-- **Python 3.8+**
-- **OpenCV:** For real-time image and video processing.
-- **TensorFlow & Keras:** For building and deploying deep learning models.
-- **dlib:** For robust face detection and landmark recognition.
-- **SQLite/MySQL:** For managing attendance databases.
-- **Flask/Django:** For creating the web-based user interface.
-- **Bootstrap:** For responsive and modern UI design.
-- **NumPy & Pandas:** For data manipulation and analysis.
-- **Git & GitHub:** For version control and collaboration.
+
+**Python 3.8+**
+
+**OpenCV: For real-time image and video processing.**
+
+**TensorFlow & Keras: For building and deploying deep learning models.**
+
+**dlib: For robust face detection and landmark recognition.**
+
+**SQLite/MySQL: For managing attendance databases.**
+
+**Tkinter: For creating a seamless desktop-based user interface.**
+
+**NumPy & Pandas: For data manipulation and analysis.**
+
+**Git & GitHub: For version control and collaboration.**
 
 ## Installation
 
