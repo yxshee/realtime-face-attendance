@@ -84,7 +84,7 @@ Experience the **Real-time Face Attendance** system in action!
 ## Technologies Used
 
 
-**Python 3.8+**
+**Python: 3.8+**
 
 **OpenCV: For real-time image and video processing.**
 
