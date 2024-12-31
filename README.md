@@ -147,23 +147,19 @@ Experience the **Real-time Face Attendance** system in action!
     - Add new users by uploading their facial images or capturing them via the camera.
     - Assign unique identifiers (e.g., student ID, employee ID) to each user.
 
-    ![Register User](https://github.com/yxshee/realtime-face-attendance/assets/register-user.png)
 
 2. **Start Attendance**
     - Click on the "Start Attendance" button to begin real-time face recognition.
     - The system will automatically detect and recognize faces, logging attendance in the database.
 
-    ![Start Attendance](https://github.com/yxshee/realtime-face-attendance/assets/start-attendance.png)
 
 3. **View Attendance Records**
     - Access the dashboard to view real-time attendance status and generate reports.
 
-    ![Attendance Dashboard](https://github.com/yxshee/realtime-face-attendance/assets/attendance-dashboard.png)
 
 4. **Generate Reports**
     - Export attendance data in various formats (e.g., CSV, PDF) for analysis and record-keeping.
 
-    ![Generate Report](https://github.com/yxshee/realtime-face-attendance/assets/generate-report.png)
 
 ## Dataset
 
