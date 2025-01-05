@@ -1,0 +1,17 @@
+Flask
+Flask-Cors
+opencv-python
+numpy
+face-recognition
+dlib
+Pillow
+scikit-learn
+pandas
+SQLAlchemy
+pytest
+logging
+gunicorn
+
+# Optional: Depending on database and environment
+mysql-connector-python
+python-dotenv
