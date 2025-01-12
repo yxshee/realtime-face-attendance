@@ -9,9 +9,8 @@ scikit-learn
 pandas
 SQLAlchemy
 pytest
-logging
 gunicorn
-
-# Optional: Depending on database and environment
+PyJWT
+# Optional
 mysql-connector-python
 python-dotenv
