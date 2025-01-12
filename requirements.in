@@ -11,6 +11,8 @@ SQLAlchemy
 pytest
 gunicorn
 PyJWT
+cv2
+numpy
 # Optional
 mysql-connector-python
 python-dotenv
