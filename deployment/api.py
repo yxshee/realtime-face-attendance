@@ -16,6 +16,9 @@ from werkzeug.security import check_password_hash
 from werkzeug.utils import secure_filename
 from werkzeug.exceptions import BadRequest, Unauthorized, InternalServerError
 
+# Mediapipe imports
+import mediapipe as mp
+
 # Initialize Flask app
 app = Flask(__name__)
 CORS(app)
@@ -50,12 +53,12 @@ def token_required(f):
         token = request.headers.get('Authorization')
         if not token:
             return jsonify({'message': 'Token is missing'}), 401
-        
+
         try:
             # Remove 'Bearer ' prefix if present
             if token.startswith('Bearer '):
                 token = token.split(" ")[1]
-            
+
             data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
             current_user = data['user_id']
         except ExpiredSignatureError:
@@ -65,7 +68,7 @@ def token_required(f):
         except Exception as e:
             logging.error(f"Token validation error: {str(e)}")
             return jsonify({'message': 'Token validation failed'}), 401
-            
+
         return f(current_user, *args, **kwargs)
     return decorator
 
@@ -99,10 +102,30 @@ def login():
         return jsonify({'message': 'Server error'}), 500
 
 
+# Face detection using Mediapipe
+def detect_faces(image_path):
+    """
+    Detects faces in the given image using Mediapipe's Face Detection API.
+    Returns True if faces are detected, otherwise False.
+    """
+    mp_face_detection = mp.solutions.face_detection
+    mp_drawing = mp.solutions.drawing_utils
+
+    image = cv2.imread(image_path)
+    with mp_face_detection.FaceDetection(model_selection=1, min_detection_confidence=0.5) as face_detection:
+        results = face_detection.process(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+        if results.detections:
+            return True  # Face detected
+    return False  # No face detected
+
+
 # API endpoint: Register Face
 @app.route('/api/register-face', methods=['POST'])
 @token_required
 def register_face(current_user):
+    """
+    API to register a face by detecting it from an uploaded image.
+    """
     try:
         if 'file' not in request.files:
             return jsonify({'message': 'No file provided'}), 400
@@ -111,17 +134,14 @@ def register_face(current_user):
         if not allowed_file(file.filename):
             return jsonify({'message': 'Invalid file type'}), 400
 
-        # Save face data
+        # Save the uploaded file
         filename = secure_filename(file.filename)
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(filepath)
 
-        # Face detection using OpenCV
-        face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-        img = cv2.imread(filepath)
-        faces = face_cascade.detectMultiScale(img, 1.3, 5)
-
-        if len(faces) == 0:
+        # Face detection using Mediapipe
+        face_detected = detect_faces(filepath)
+        if not face_detected:
             os.remove(filepath)
             return jsonify({'message': 'No face detected'}), 400
 
@@ -135,6 +155,9 @@ def register_face(current_user):
 @app.route('/api/attendance', methods=['POST'])
 @token_required
 def mark_attendance(current_user):
+    """
+    API to mark attendance based on an uploaded face image.
+    """
     try:
         if 'file' not in request.files:
             return jsonify({'message': 'No file provided'}), 400
@@ -150,11 +173,17 @@ def mark_attendance(current_user):
 
 # Database connection helper
 def get_db_connection():
+    """
+    Establish a database connection using the configured credentials.
+    """
     return pymysql.connect(**DB_CONFIG)
 
 
 # File validation helper
 def allowed_file(filename):
+    """
+    Validate that a file has an allowed extension.
+    """
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
 
