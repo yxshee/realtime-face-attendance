@@ -2,8 +2,8 @@ Flask
 Flask-Cors
 opencv-python
 numpy
-face-recognition
-dlib
+dlib==19.22.99
+face-recognition==1.3.0
 Pillow
 scikit-learn
 pandas
@@ -14,3 +14,5 @@ PyJWT
 # Optional
 mysql-connector-python
 python-dotenv
+
+

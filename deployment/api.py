@@ -10,9 +10,9 @@ import numpy as np
 import pymysql
 import jwt
 from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
-from flask import Flask, request, jsonify, abort
+from flask import Flask, request, jsonify
 from flask_cors import CORS
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import check_password_hash
 from werkzeug.utils import secure_filename
 from werkzeug.exceptions import BadRequest, Unauthorized, InternalServerError
 
@@ -42,6 +42,7 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
+
 def token_required(f):
     @wraps(f)
     def decorator(*args, **kwargs):
@@ -54,9 +55,11 @@ def token_required(f):
             if token.startswith('Bearer '):
                 token = token.split(" ")[1]
             
-            data = jwt.decode(token, 
-                            app.config['SECRET_KEY'], 
-                            algorithms=["HS256"])
+            data = jwt.decode(
+                token,
+                app.config['SECRET_KEY'],
+                algorithms=["HS256"]
+            )
             current_user = data['user_id']
             
         except ExpiredSignatureError:
@@ -70,6 +73,7 @@ def token_required(f):
         return f(current_user, *args, **kwargs)
     return decorator
 
+
 @app.route('/api/login', methods=['POST'])
 def login():
     try:
@@ -80,22 +84,29 @@ def login():
         with get_db_connection() as conn:
             cursor = conn.cursor()
             cursor.execute('SELECT * FROM users WHERE username = %s', 
-                         (auth.get('username'),))
+                           (auth.get('username'),))
             user = cursor.fetchone()
 
+            # user[0] -> user_id, user[1] -> username, user[2] -> hashed_password
             if not user or not check_password(auth.get('password'), user[2]):
                 return jsonify({'message': 'Invalid credentials'}), 401
 
-            token = jwt.encode({
-                'user_id': user[0],
-                'exp': datetime.utcnow() + timedelta(hours=24)
-            }, app.config['SECRET_KEY'])
+            # Generate JWT token
+            token = jwt.encode(
+                {
+                    'user_id': user[0],
+                    'exp': datetime.utcnow() + timedelta(hours=24)
+                },
+                app.config['SECRET_KEY'],
+                algorithm='HS256'  # Explicitly specify the algorithm
+            )
 
             return jsonify({'token': token}), 200
 
     except Exception as e:
         logging.error(f"Login error: {str(e)}")
         return jsonify({'message': 'Server error'}), 500
+
 
 @app.route('/api/register-face', methods=['POST'])
 @token_required
@@ -128,6 +139,7 @@ def register_face(current_user):
         logging.error(f"Face registration error: {str(e)}")
         return jsonify({'message': 'Server error'}), 500
 
+
 @app.route('/api/attendance', methods=['POST'])
 @token_required
 def mark_attendance(current_user):
@@ -144,19 +156,27 @@ def mark_attendance(current_user):
         logging.error(f"Attendance marking error: {str(e)}")
         return jsonify({'message': 'Server error'}), 500
 
+
 def get_db_connection():
     return pymysql.connect(**DB_CONFIG)
+
 
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
+
 def check_password(password_input, password_hash):
+    """
+    Compares the provided password_input with the stored password_hash.
+    """
     return check_password_hash(password_hash, password_input)
+
 
 def handle_error(e):
     logging.error(f"Error: {str(e)}")
     return jsonify({'message': str(e)}), getattr(e, 'code', 500)
+
 
 # Register error handlers
 app.register_error_handler(BadRequest, handle_error)
@@ -164,4 +184,4 @@ app.register_error_handler(Unauthorized, handle_error)
 app.register_error_handler(InternalServerError, handle_error)
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0', port=5000)
+    app.run(debug=False, host='0.0.0.0', port=5001)
