@@ -15,4 +15,5 @@ PyJWT
 mysql-connector-python
 python-dotenv
 
+opencv-python-headless
 
