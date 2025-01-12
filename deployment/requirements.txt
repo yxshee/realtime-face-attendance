@@ -1,8 +1,8 @@
 Flask
 Flask-Cors
 opencv-python-headless
+mediapipe
 numpy
-dlib==19.24.6
 face-recognition
 Pillow
 scikit-learn

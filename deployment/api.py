@@ -43,6 +43,7 @@ logging.basicConfig(
 )
 
 
+# Token authentication decorator
 def token_required(f):
     @wraps(f)
     def decorator(*args, **kwargs):
@@ -55,13 +56,8 @@ def token_required(f):
             if token.startswith('Bearer '):
                 token = token.split(" ")[1]
             
-            data = jwt.decode(
-                token,
-                app.config['SECRET_KEY'],
-                algorithms=["HS256"]
-            )
+            data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
             current_user = data['user_id']
-            
         except ExpiredSignatureError:
             return jsonify({'message': 'Token has expired'}), 401
         except InvalidTokenError:
@@ -74,6 +70,7 @@ def token_required(f):
     return decorator
 
 
+# API endpoint: Login
 @app.route('/api/login', methods=['POST'])
 def login():
     try:
@@ -83,8 +80,7 @@ def login():
 
         with get_db_connection() as conn:
             cursor = conn.cursor()
-            cursor.execute('SELECT * FROM users WHERE username = %s', 
-                           (auth.get('username'),))
+            cursor.execute('SELECT * FROM users WHERE username = %s', (auth.get('username'),))
             user = cursor.fetchone()
 
             # user[0] -> user_id, user[1] -> username, user[2] -> hashed_password
@@ -92,22 +88,18 @@ def login():
                 return jsonify({'message': 'Invalid credentials'}), 401
 
             # Generate JWT token
-            token = jwt.encode(
-                {
-                    'user_id': user[0],
-                    'exp': datetime.utcnow() + timedelta(hours=24)
-                },
-                app.config['SECRET_KEY'],
-                algorithm='HS256'  # Explicitly specify the algorithm
-            )
+            token = jwt.encode({
+                'user_id': user[0],
+                'exp': datetime.utcnow() + timedelta(hours=24)
+            }, app.config['SECRET_KEY'], algorithm='HS256')
 
             return jsonify({'token': token}), 200
-
     except Exception as e:
         logging.error(f"Login error: {str(e)}")
         return jsonify({'message': 'Server error'}), 500
 
 
+# API endpoint: Register Face
 @app.route('/api/register-face', methods=['POST'])
 @token_required
 def register_face(current_user):
@@ -119,12 +111,12 @@ def register_face(current_user):
         if not allowed_file(file.filename):
             return jsonify({'message': 'Invalid file type'}), 400
 
-        # Process and save face data
+        # Save face data
         filename = secure_filename(file.filename)
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(filepath)
 
-        # Process face detection
+        # Face detection using OpenCV
         face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
         img = cv2.imread(filepath)
         faces = face_cascade.detectMultiScale(img, 1.3, 5)
@@ -134,12 +126,12 @@ def register_face(current_user):
             return jsonify({'message': 'No face detected'}), 400
 
         return jsonify({'message': 'Face registered successfully'}), 201
-
     except Exception as e:
         logging.error(f"Face registration error: {str(e)}")
         return jsonify({'message': 'Server error'}), 500
 
 
+# API endpoint: Mark Attendance
 @app.route('/api/attendance', methods=['POST'])
 @token_required
 def mark_attendance(current_user):
@@ -148,40 +140,33 @@ def mark_attendance(current_user):
             return jsonify({'message': 'No file provided'}), 400
 
         file = request.files['file']
-        # Process attendance marking logic here
-        
-        return jsonify({'message': 'Attendance marked successfully'}), 200
+        # Add attendance marking logic here
 
+        return jsonify({'message': 'Attendance marked successfully'}), 200
     except Exception as e:
         logging.error(f"Attendance marking error: {str(e)}")
         return jsonify({'message': 'Server error'}), 500
 
 
+# Database connection helper
 def get_db_connection():
     return pymysql.connect(**DB_CONFIG)
 
 
+# File validation helper
 def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
 
-def check_password(password_input, password_hash):
-    """
-    Compares the provided password_input with the stored password_hash.
-    """
-    return check_password_hash(password_hash, password_input)
-
-
+# Register error handlers
+@app.errorhandler(BadRequest)
+@app.errorhandler(Unauthorized)
+@app.errorhandler(InternalServerError)
 def handle_error(e):
     logging.error(f"Error: {str(e)}")
     return jsonify({'message': str(e)}), getattr(e, 'code', 500)
 
 
-# Register error handlers
-app.register_error_handler(BadRequest, handle_error)
-app.register_error_handler(Unauthorized, handle_error)
-app.register_error_handler(InternalServerError, handle_error)
-
+# Run the app
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=5001)
