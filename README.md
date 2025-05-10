@@ -311,5 +311,3 @@ Feel free to open an issue or reach out directly for collaboration opportunities
 - **Community Contributors:** Special thanks to all contributors and supporters who helped make this project possible.
 
 ---
-
-
