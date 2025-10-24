@@ -290,8 +290,6 @@ Contributions are **welcome**! Whether it's reporting bugs, suggesting features,
 
 This project is licensed under the [MIT License](LICENSE).
 
-![MIT License](https://img.shields.io/github/license/yxshee/realtime-face-attendance)
-
 ## Contact
 
 For any inquiries, issues, or contributions, please contact:
