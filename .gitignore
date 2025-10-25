@@ -57,8 +57,6 @@ app.log
 TrainingImage/*.jpg
 TrainingImage/*.jpeg
 TrainingImage/*.png
-TrainingImageLabel/*.yml
-!TrainingImageLabel/.gitkeep
 Attendance/*.csv
 StudentDetails/*.csv
 model/*.pkl
@@ -118,3 +116,5 @@ secrets.json
 *.tmp
 *.temp
 *.bak
+
+TrainingImageLabel/
