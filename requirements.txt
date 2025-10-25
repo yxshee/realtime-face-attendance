@@ -1,13 +1,28 @@
-Flask
-Flask-Cors
-opencv-python-headless
-mediapipe
-numpy
-face-recognition
-Pillow
-scikit-learn
-pandas
-SQLAlchemy
-pytest
-gunicorn
-PyJWT
+# Core Framework
+Flask>=2.3.0
+Flask-Cors>=4.0.0
+gunicorn>=21.0.0
+
+# Computer Vision & Face Recognition
+opencv-python>=4.8.0
+opencv-contrib-python>=4.8.0
+mediapipe>=0.10.0
+face-recognition>=1.3.0
+
+# Image Processing
+Pillow>=10.0.0
+
+# Data Processing
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+
+# Database
+SQLAlchemy>=2.0.0
+pymysql>=1.1.0
+
+# Authentication & Security
+PyJWT>=2.8.0
+
+# Testing
+pytest>=7.4.0

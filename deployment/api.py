@@ -19,6 +19,11 @@ from werkzeug.exceptions import BadRequest, Unauthorized, InternalServerError
 # Mediapipe imports
 import mediapipe as mp
 
+# Password checking alias
+def check_password(password, hashed):
+    """Check password against hash. Works with both bcrypt and werkzeug hashes."""
+    return check_password_hash(hashed, password)
+
 # Initialize Flask app
 app = Flask(__name__)
 CORS(app)
@@ -196,6 +201,17 @@ def handle_error(e):
     return jsonify({'message': str(e)}), getattr(e, 'code', 500)
 
 
+# Health check endpoint for deployment monitoring
+@app.route('/api/health', methods=['GET'])
+def health_check():
+    """Health check endpoint for load balancers and monitoring."""
+    return jsonify({
+        'status': 'healthy',
+        'timestamp': datetime.utcnow().isoformat()
+    }), 200
+
+
 # Run the app
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0', port=5001)
+    port = int(os.getenv('PORT', 5001))
+    app.run(debug=False, host='0.0.0.0', port=port)

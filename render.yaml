@@ -1,0 +1,23 @@
+# Render deployment configuration
+# https://render.com/docs/yaml-spec
+
+services:
+  - type: web
+    name: face-attendance-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn deployment.api:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.0"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DB_HOST
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_NAME
+        value: face_attendance
+    healthCheckPath: /api/health

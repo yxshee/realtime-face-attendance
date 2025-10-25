@@ -1,17 +1,8 @@
 # Realtime Face Attendance System
 
-<!--![License](https://img.shields.io/github/license/yxshee/realtime-face-attendance)
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)
-![Stars](https://img.shields.io/github/stars/yxshee/realtime-face-attendance?style=social)
-![Forks](https://img.shields.io/github/forks/yxshee/realtime-face-attendance?style=social)-->
+<img width="1164" alt="Face Attendance System" src="https://github.com/user-attachments/assets/7df7ab47-95e0-4cfa-b4fe-3bf1e00733c7">
 
-<img width="1164" alt="image" src="https://github.com/user-attachments/assets/7df7ab47-95e0-4cfa-b4fe-3bf1e00733c7">
-
-<br>
-
-<br>
-
-A **highly efficient and accurate** real-time face attendance system leveraging **state-of-the-art computer vision** and **machine learning** technologies.Seamless and automated attendance tracking using facial recognition
+A **highly efficient and accurate** real-time face attendance system using **OpenCV** and **LBPH Face Recognition**. Features both a desktop GUI application and a REST API for seamless attendance tracking.
 
 ## Table of Contents
 
@@ -20,85 +11,108 @@ A **highly efficient and accurate** real-time face attendance system leveraging 
 - [Architecture](#architecture)
 - [Demo](#demo)
 - [Technologies Used](#technologies-used)
+- [Project Structure](#project-structure)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Dataset](#dataset)
-- [Model Training](#model-training)
-- [Examples](#examples)
+- [API Documentation](#api-documentation)
+- [Deployment](#deployment)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
-- [Acknowledgements](#acknowledgements)
 
 ## Introduction
 
-Attendance management is a critical component in educational institutions and organizations. **Real-time Face Attendance** provides an automated solution to streamline the attendance process using advanced facial recognition technology. This system ensures accuracy, reduces manual effort, and enhances security by preventing proxy attendance.
+Attendance management is a critical component in educational institutions and organizations. This **Real-time Face Attendance** system provides an automated solution to streamline the attendance process using facial recognition technology. The system ensures accuracy, reduces manual effort, and enhances security by preventing proxy attendance.
 
 ## Features
 
 ### **Real-time Face Recognition**
 Instantly recognize and record attendance as individuals enter the monitored area using live camera feeds.
 
-### **High Accuracy**
-Employs deep learning models trained on extensive datasets to ensure precise face recognition even in varying lighting and angles.
+### **Dual Interface**
+- **Desktop Application**: Full-featured Tkinter GUI for local use
+- **REST API**: Flask-based API for web integration
 
 ### **Multi-User Support**
-Capable of handling multiple users simultaneously, making it ideal for large classrooms or auditoriums.
+Capable of handling multiple users simultaneously, ideal for classrooms or auditoriums.
 
 ### **User-Friendly Interface**
-Intuitive dashboard for easy management and monitoring of attendance records.
-
-### **Secure Data Handling**
-Ensures all attendance data is securely stored and processed, adhering to privacy standards.
+Intuitive dark-themed dashboard with four main tabs: Register, Train, Attendance, and Database.
 
 ### **Automated Report Generation**
-Generates comprehensive attendance reports with customizable parameters for analysis and record-keeping.
+Generates daily attendance CSV reports with timestamps for analysis and record-keeping.
 
 ## Architecture
 
 <div align="center">
-    
+
 ![Architecture Diagram](https://github.com/user-attachments/assets/234fe509-93e7-4655-ab9c-b9c1fadd3cee)
 
 **System architecture showcasing the flow from image capture to attendance recording.**
 
- **Image Capture**: Utilizes webcams or IP cameras to capture live video streams.<br>
- **Face Detection**: Processes frames using OpenCV to detect faces in real-time.<br>
- **Face Recognition**: Applies a pre-trained deep learning model to identify individuals.<br>
- **Attendance Logging**: Records recognized faces with timestamps in the database.<br>
- **User Interface**: Displays real-time attendance status and provides administrative controls.<br>
+</div>
 
-<img alt="Deepface Architecture by Facebook 
-" src="https://github.com/user-attachments/assets/1b83650c-f85c-48c3-bfb3-d1bf16ba67fa" >
-**Deepface Architecture by Facebook** </div>
+### How It Works
 
-
-
+1. **Image Capture**: Uses webcam to capture live video streams
+2. **Face Detection**: Haar Cascade classifier detects faces in real-time
+3. **Face Recognition**: LBPH (Local Binary Patterns Histograms) algorithm identifies individuals
+4. **Attendance Logging**: Records recognized faces with timestamps to CSV files
+5. **User Interface**: Displays real-time status and provides administrative controls
 
 ## Demo
 
-Experience the **Real-time Face Attendance** system in action!
-<a>Demo Screenshot <br> <img width="878" alt="image" src="https://github.com/user-attachments/assets/fe081adf-88cf-4c42-9609-b499b1f2b9c1" /></a>
-
+<img width="878" alt="Demo Screenshot" src="https://github.com/user-attachments/assets/fe081adf-88cf-4c42-9609-b499b1f2b9c1" />
 
 ## Technologies Used
 
+### Desktop Application (`codes/ultimate_system.py`)
 
-**Python: 3.8+**
+| Technology | Purpose |
+|------------|---------|
+| **Python 3.8+** | Primary programming language |
+| **OpenCV** | Real-time image/video processing |
+| **opencv-contrib-python** | LBPH Face Recognizer |
+| **Tkinter** | Desktop GUI framework |
+| **NumPy** | Numerical operations |
+| **Pandas** | CSV data handling |
+| **Pillow** | Image processing for GUI |
 
-**OpenCV: For real-time image and video processing.**
+### REST API (`deployment/api.py`)
 
-**TensorFlow & Keras: For building and deploying deep learning models.**
+| Technology | Purpose |
+|------------|---------|
+| **Flask** | Web framework |
+| **Flask-CORS** | Cross-origin resource sharing |
+| **MediaPipe** | Face detection |
+| **PyJWT** | Authentication tokens |
+| **PyMySQL** | MySQL database connector |
+| **Gunicorn** | Production WSGI server |
 
-**dlib: For robust face detection and landmark recognition.**
+## Project Structure
 
-**SQLite/MySQL: For managing attendance databases.**
-
-**Tkinter: For creating a seamless desktop-based user interface.**
-
-**NumPy & Pandas: For data manipulation and analysis.**
-
-**Git & GitHub: For version control and collaboration.**
+```
+realtime-face-attendance/
+├── codes/
+│   └── ultimate_system.py      # Desktop Tkinter application (main)
+├── deployment/
+│   └── api.py                  # Flask REST API
+├── model/
+│   └── Haarcascade.xml         # Face detection model
+├── database/
+│   └── init_db.sql             # MySQL schema
+├── docs/
+│   └── PROJECT_DOCUMENTATION.md
+├── TrainingImage/              # Captured face images (gitignored)
+├── TrainingImageLabel/         # Trained model files (gitignored)
+├── Attendance/                 # CSV attendance records (gitignored)
+├── logs/                       # Application logs (gitignored)
+├── .env.example                # Environment variables template
+├── .gitignore
+├── requirements.txt
+├── LICENSE.md
+└── README.md
+```
 
 ## Installation
 
@@ -106,8 +120,8 @@ Experience the **Real-time Face Attendance** system in action!
 
 - **Python 3.8 or higher**
 - **Git**
-- **Virtual Environment Tool** (e.g., `venv`, `conda`)
-- **Webcam or IP Camera** for real-time video capture
+- **Webcam** for real-time video capture
+- **MySQL** (optional, for API deployment)
 
 ### Steps
 
@@ -128,184 +142,135 @@ Experience the **Real-time Face Attendance** system in action!
     pip install -r requirements.txt
     ```
 
-4. **Download Pre-trained Models**
-    - Ensure that the `models/` directory contains the necessary pre-trained models. If not, follow the [Model Training](#model-training) section.
+4. **Configure Environment** (for API only)
+    ```bash
+    cp .env.example .env
+    # Edit .env with your database credentials
+    ```
 
 ## Usage
 
-### Running the Application
-
-1. **Activate the Virtual Environment**
-    ```bash
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
-    ```
-
-2. **Launch the Application**
-    ```bash
-    python app.py
-    ```
-
-3. **Access the Interface**
-    - Open your browser and navigate to `http://localhost:5000` to use the Real-time Face Attendance system.
-
-### Using the Attendance System
-
-1. **Register Users**
-    - Add new users by uploading their facial images or capturing them via the camera.
-    - Assign unique identifiers (e.g., student ID, employee ID) to each user.
-
-
-2. **Start Attendance**
-    - Click on the "Start Attendance" button to begin real-time face recognition.
-    - The system will automatically detect and recognize faces, logging attendance in the database.
-
-
-3. **View Attendance Records**
-    - Access the dashboard to view real-time attendance status and generate reports.
-
-
-4. **Generate Reports**
-    - Export attendance data in various formats (e.g., CSV, PDF) for analysis and record-keeping.
-
-
-## Dataset
-
-The **Real-time Face Attendance** system requires a dataset of user facial images for accurate recognition. You can create your own dataset by registering users through the application interface.
-
-### Dataset Features
-
-- **Diverse Users:** Supports multiple users with unique identifiers.
-- **Varied Conditions:** Captures images under different lighting, angles, and expressions to enhance model robustness.
-- **Secure Storage:** Ensures all facial data is securely stored and encrypted in the database.
-
-> **Note:** For privacy and security reasons, the dataset is not publicly available. Ensure compliance with data protection regulations when collecting and storing facial data.
-
-## Model Training
-
-If you need to **train the face recognition model** from scratch or update it with new data, follow these steps:
-
-### 1. Prepare the Dataset
-
-Organize user facial images into the following directory structure:
-
-```
-data/
-├── train/
-│   ├── user1/
-│   ├── user2/
-│   └── userN/
-├── validation/
-│   ├── user1/
-│   ├── user2/
-│   └── userN/
-```
-
-### 2. Data Augmentation (Optional)
-
-Enhance the dataset with augmented images to improve model robustness.
+### Desktop Application (Recommended for Local Use)
 
 ```bash
-python data_augmentation.py --input_dir data/train/ --output_dir data/augmented_train/
+# Activate virtual environment
+source venv/bin/activate
+
+# Run the desktop application
+python codes/ultimate_system.py
 ```
 
-### 3. Train the Model
+#### Workflow
+
+1. **Register Tab**: Enter student ID and name, then capture 60 face images
+2. **Train Tab**: Train the LBPH model with captured images
+3. **Attendance Tab**: Enter subject name and start real-time attendance tracking
+4. **Database Tab**: View today's attendance records
+
+### REST API (For Web Integration)
 
 ```bash
-python train_model.py --data_dir data/train/ --model_dir models/
+# Activate virtual environment
+source venv/bin/activate
+
+# Initialize database (MySQL required)
+mysql -u root -p < database/init_db.sql
+
+# Run the API server
+python deployment/api.py
 ```
 
-### 4. Evaluate Performance
+The API runs on `http://localhost:5001`
 
-Assess the model's accuracy, precision, recall, and F1-score.
+## API Documentation
+
+### Endpoints
+
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
+| POST | `/api/login` | Authenticate user | No |
+| POST | `/api/register-face` | Register new face | Yes |
+| POST | `/api/attendance` | Mark attendance | Yes |
+
+### Authentication
+
+All protected endpoints require a JWT token in the Authorization header:
+```
+Authorization: Bearer <your-token>
+```
+
+### Example: Login
 
 ```bash
-python evaluate_model.py --model_dir models/
+curl -X POST http://localhost:5001/api/login \
+  -H "Content-Type: application/json" \
+  -d '{"username": "admin", "password": "password"}'
 ```
 
-### 5. Deploy the Model
+## Deployment
 
-Ensure the trained model files are placed in the `models/` directory for the application to use.
+### ⚠️ Important: Platform Considerations
 
-## Examples
+This project has two deployment modes:
 
-### User Registration
+| Mode | Platform Recommendation | Use Case |
+|------|------------------------|----------|
+| Desktop App | Local machine | Classroom/office use |
+| REST API | Railway, Render, Heroku | Web integration |
 
+### Why Not Netlify?
 
+Netlify is designed for static sites and serverless functions. This project requires:
+- Continuous camera access (desktop only)
+- Persistent server processes
+- Real-time face recognition (exceeds serverless time limits)
 
-*Registering a new user by capturing their facial images.*
+### Recommended: Railway/Render Deployment (API Only)
 
-### Real-time Attendance
+1. Push code to GitHub
+2. Connect repository to [Railway](https://railway.app) or [Render](https://render.com)
+3. Set environment variables from `.env.example`
+4. Deploy with start command: `gunicorn deployment.api:app`
 
+### Procfile (for Heroku/Railway)
 
+```
+web: gunicorn deployment.api:app --bind 0.0.0.0:$PORT
+```
 
-*System recognizing and logging attendance in real-time.*
+## Environment Variables
 
-### Attendance Reports
-
-
-
-*Comprehensive attendance reports generated by the system.*
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `SECRET_KEY` | Flask secret key | Required |
+| `DB_HOST` | MySQL host | localhost |
+| `DB_USER` | MySQL username | root |
+| `DB_PASSWORD` | MySQL password | Required |
+| `DB_NAME` | Database name | face_attendance |
 
 ## Contributing
 
-Contributions are **welcome**! Whether it's reporting bugs, suggesting features, or submitting pull requests, your input helps improve the Real-time Face Attendance system.
+Contributions are welcome! Please see our [Contributing Guidelines](CONTRIBUTING.md).
 
 ### How to Contribute
 
-1. **Fork the Repository**
-    - Click the "Fork" button at the top-right corner of this page.
-
-2. **Clone Your Fork**
-    ```bash
-    git clone https://github.com/your-username/realtime-face-attendance.git
-    cd realtime-face-attendance
-    ```
-
-3. **Create a Feature Branch**
-    ```bash
-    git checkout -b feature/YourFeature
-    ```
-
-4. **Commit Your Changes**
-    ```bash
-    git commit -m "Add your feature"
-    ```
-
-5. **Push to the Branch**
-    ```bash
-    git push origin feature/YourFeature
-    ```
-
-6. **Open a Pull Request**
-    - Navigate to the original repository and open a pull request from your fork.
-
-### Contribution Guidelines
-
-- **Code Quality:** Ensure your code follows the project's coding standards and is well-documented.
-- **Testing:** Include relevant tests for new features or bug fixes.
-- **Issue Tracking:** Before working on a new feature or bug, check existing issues to avoid duplicates.
-- **Respect and Collaboration:** Be respectful and considerate in all interactions. Collaborate effectively with other contributors.
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/YourFeature`
+3. Commit changes: `git commit -m "Add YourFeature"`
+4. Push to branch: `git push origin feature/YourFeature`
+5. Open a Pull Request
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE.md).
 
 ## Contact
 
-For any inquiries, issues, or contributions, please contact:
-
-- **Author:** [Yash Dogra](https://github.com/yxshee)
-- **Email:** yash999901@gmail.com
-
-Feel free to open an issue or reach out directly for collaboration opportunities!
+- **Author**: [Yash Dogra](https://github.com/yxshee)
+- **Email**: yxshdogra@gmail.com
 
 ## Acknowledgements
 
-- **OpenCV:** For providing powerful computer vision tools.
-- **TensorFlow & Keras:** For enabling efficient deep learning model development.
-- **dlib:** For robust face detection and landmark recognition.
-- **Flask/Django:** For creating a seamless web-based user interface.
-- **Bootstrap:** For responsive and modern UI design.
-- **Community Contributors:** Special thanks to all contributors and supporters who helped make this project possible.
-
----
+- **OpenCV** - Computer vision tools
+- **MediaPipe** - Face detection
+- **Python Community** - Excellent libraries and documentation
