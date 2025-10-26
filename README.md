@@ -1,6 +1,9 @@
 # Realtime Face Attendance System
 
-<img width="1164" alt="Face Attendance System" src="https://github.com/user-attachments/assets/7df7ab47-95e0-4cfa-b4fe-3bf1e00733c7">
+<img width="1164" alt="Face Attendance System" src="https://github.com/user-attachments/assets/a3a9d6a2-23b5-40c6-8d43-d1054e408c40">
+
+
+
 
 A **highly efficient and accurate** real-time face attendance system using **OpenCV** and **LBPH Face Recognition**. Features both a desktop GUI application and a REST API for seamless attendance tracking.
 
